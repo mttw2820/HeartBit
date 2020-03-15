@@ -1,0 +1,76 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[60]:
+
+
+# melon 태그 검색 후 플레이리스트 목록 가져오기
+
+from selenium import webdriver
+    
+# path = 로컬에 저장된 chromedriver 위치
+# url = 접속하려는 웹 페이지 주소
+path = '/Users/mttw2820/Desktop/Mac/webCrawling/chromedriver'
+url = 'https://www.melon.com/dj/themegenre/djthemegenre_list.htm'
+driver = webdriver.Chrome(path)
+driver.get(url)
+driver.implicitly_wait(10)
+
+def print_playlist() :
+    musicList = driver.find_elements_by_xpath("//tbody//tr")
+    titleList = driver.find_elements_by_xpath("//div[@class='ellipsis rank01']")
+    singerList = driver.find_elements_by_xpath("//div[@class='ellipsis rank02']")
+
+    total = len(musicList)
+    for index in range(total) :
+        musicTitle = titleList[index].find_element_by_tag_name('span').find_element_by_tag_name('a').text
+        singer = singerList[index].find_element_by_tag_name('a').text
+        print("{:>3} {:>60}{:>60}".format(index, musicTitle, singer))
+    
+    
+        
+def crawl_playlist() :
+    #플레이리스트 제목, 수록곡 수 출력
+    listInfo = driver.find_elements_by_xpath("//h5[@class='title']")[1]
+    listSize = listInfo.find_element_by_tag_name('span').text
+    print("수록곡" + listSize)
+    #플레이리스트 출력
+    print_playlist()
+    #다음 페이지가 있다면 넘어가기
+    
+    
+# 차트 위치 잡기
+# 태그이름[@속성 = '특정속성값'] 으로 지정한다
+# 태그 내부 정보들은 get_attribute로 추출할 수 있다.
+search = driver.find_element_by_xpath("//div[@class='input_wrap']")
+search_tag = search.find_element_by_tag_name('input')
+search_btn = search.find_element_by_tag_name('button')
+tag = "휴식"
+search_tag.clear()
+search_tag.send_keys(tag)
+search_btn.click()
+
+
+
+for x in range(20) :
+    playlist = driver.find_elements_by_xpath("//div[@class='entry']")
+    plist = playlist[x]
+    # 플레이리스트의 제목을 출력하고 플레이리스트 페이지로 이동한다
+    print(plist.get_attribute('title'))
+    List = plist.find_elements_by_tag_name('a')[1]
+    listName = List.text
+    print(listName)
+    List.click()
+    # 플레이리스트 가져오기
+    crawl_playlist()
+    driver.execute_script("window.history.go(-1)")
+# tag에 들어간 검색어의 검색 결과가 나온다
+
+print("over")
+
+
+# In[ ]:
+
+
+
+
