@@ -1,0 +1,25 @@
+# ninja log v5
+64	104	0	clean_sa	46ab9549445ac981
+26	1214	0	src/sap.o	85fd0f2e6337dc41
+104	131	0	clean	d59b6dac04fa9b5d
+5	1107	0	src/main_app.o	4618b02552353604
+0	64	0	clean_cov	b3de405e02eb7ca8
+1113	1805	0	hrmsensorapp	b4031d7e1a03ac7f
+1	56	0	clean_cov	b3de405e02eb7ca8
+56	101	0	clean_sa	46ab9549445ac981
+101	127	0	clean	d59b6dac04fa9b5d
+1	42	0	clean_cov	b3de405e02eb7ca8
+42	86	0	clean_sa	46ab9549445ac981
+86	115	0	clean	d59b6dac04fa9b5d
+22	1222	0	src/main_app.o	8972b1a8ed0806b1
+8	1286	0	src/sap.o	85fd0f2e6337dc41
+1287	1962	0	hrmsensorapp	7b5cce8b8e5f5cc5
+0	63	0	clean_cov	b3de405e02eb7ca8
+63	106	0	clean_sa	46ab9549445ac981
+106	130	0	clean	d59b6dac04fa9b5d
+0	64	0	clean_cov	b3de405e02eb7ca8
+64	118	0	clean_sa	46ab9549445ac981
+118	146	0	clean	d59b6dac04fa9b5d
+20	1186	0	src/main_app.o	8972b1a8ed0806b1
+7	1276	0	src/sap.o	85fd0f2e6337dc41
+1277	1886	0	hrmsensorapp	7b5cce8b8e5f5cc5
