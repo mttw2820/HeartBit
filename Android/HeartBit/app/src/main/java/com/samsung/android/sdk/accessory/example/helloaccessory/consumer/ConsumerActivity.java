@@ -200,11 +200,6 @@ public class ConsumerActivity extends Activity {
         }
     };
 
-    /*
-    public static void updateTextView(final String str) {
-        mTextView.setText(str);
-    }
-    */
     // 연결 상태 이미지 업데이트
     public static void updateImageView(final String str) {
         if(str == "on")
@@ -212,6 +207,7 @@ public class ConsumerActivity extends Activity {
         else if(str=="off")
             connectedImage.setImageResource(R.drawable.ui_hrm_off);
     }
+
     // 가장 최근 HRM data 가져오기
     public static void updateHRMdata(final String str){
         if(str.length()>=10){
@@ -223,8 +219,8 @@ public class ConsumerActivity extends Activity {
             bpm = -1;
         }
         else {
-            HRMview.setText("145");
-            bpm = Double.parseDouble("145");
+            HRMview.setText(str);
+            bpm = Double.parseDouble(str);
         }
     }
 
@@ -409,8 +405,6 @@ public class ConsumerActivity extends Activity {
             return view;
         }
     }
-
-
 
     // OpenWeatherMap API 날씨 데이터 가져오기
     public void getWeatherData(){
